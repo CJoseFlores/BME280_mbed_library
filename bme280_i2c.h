@@ -28,7 +28,29 @@
 //Calibration Registers
 //<--Fill in eventually-->
 
-
+class BME280_I2C {
+    public:
+    
+    /**
+    * Makes a BME280_I2C object with specified pins and frequency.
+    * @param sda The SDA pin on the mbed.
+    * @param scl The SCL pin on the mbed.
+    * @param frequency The frequency to use for the i2c communication.
+    */
+    BME280_I2C(PinName sda, scl, int frequency);
+        
+    /**
+    * Resets the sensor using the complete power-on-reset procedure.
+    * More information on page 26 of the datasheet.
+    */
+    void reset(void);
+    
+    private:
+    
+    I2C i2c; //Used to communicate with the sensor using i2c.
+    const char bmeAddr; //Address assigned to the sensor.
+    
+}
 
 
 #endif BME280_H
