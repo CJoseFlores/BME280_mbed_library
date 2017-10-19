@@ -25,8 +25,22 @@
 #define BME_280_RESET           0xE0 // Write-Only
 #define BME_280_ID              0xD0 // Read-Only
 
-//Calibration Registers
-//<--Fill in eventually-->
+//Temperature Calibration Registers, dig_T1-3.
+#define BME_280_CALIB00         0x88 // 0x88 & 0x89 expect an unsigned short.
+#define BME_280_CALIB02         0x8A // 0x8A - 0x8D expect a signed short.
+
+//Pressure Calibration Registers, dig_P1-9.
+#define BME_280_CALIB06         0x8E // 0x8E & 0x8F -> unsigned short
+#define BME_280_CALIB08         0x90 // 0x90 - 0x9F -> signed short
+
+//Humidity Calibration Registers, dig_H1-H6
+#define BME_280_CALIB25         0xA1 // 0xA1 -> unsigned char
+#define BME_280_CALIB26         0xE1 // 0xE1 & 0xE2 - > signed short
+#define BME_280_CALIB28         0xE3 // 0xE3 -> unsigned char
+#define BME_280_CALIB29         0xE4 // 0xE4 - 0xE6 -> signed short
+#define BME_280_CALIB32         0xE7 // 0xE7 - > signed char
+
+
 
 class BME280_I2C {
     public:
